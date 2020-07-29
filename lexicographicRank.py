@@ -5,7 +5,7 @@ https://practice.geeksforgeeks.org/problems/rank-the-permutations/0
 # TC : 0(n)
 
 mod = 1000003
-maxx = 257
+maxx = 256
 
 def fact(n):
     return n if (n < 2) else (n * fact(n-1))
