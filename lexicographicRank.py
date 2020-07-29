@@ -2,7 +2,7 @@
 https://practice.geeksforgeeks.org/problems/rank-the-permutations/0
 '''
 
-// TC : 0(n)
+# TC : 0(n)
 
 mod = 1000003
 maxx = 257
