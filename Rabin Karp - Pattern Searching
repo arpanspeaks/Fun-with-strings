@@ -1,0 +1,77 @@
+# Link: https://practice.geeksforgeeks.org/problems/rabin-karp-pattern-searching/1/?track=SPC-Strings&batchId=145
+
+'''
+Rabin Karp - Pattern Searching 
+    
+Given a string S and a pattern P of lowercase characters. The task is to check if the pattern is present in string or not.
+    
+Input:
+The first line of input contains the number of test cases T. For each testcase, the first line of input contains string S and the next line contains pattern P.
+    
+Output:
+For each testcase, print "Yes" if the pattern is found in the string else print "No".
+    
+Your Task:
+This is a function problem. You need to complete the function search which takes 3 arguments(S, P and prime q) and returns true if the pattern is found else returns false.
+    
+Expected Time Complexity: O(N + M).
+Expected Auxiliary Space: O(1).
+Note: N = |S|, M = |P|.
+    
+Constraints:
+1 <= T <= 100
+1 <= |S|, |P| <= 104
+    
+Example:
+    
+Input:
+2
+aabaacaadaabaaba
+aaba
+aabaacaadaabaaba
+asdfa
+    
+Output:
+Yes
+No
+    
+Explanation:
+Testcase 1: You can find the patter at starting at index 12.
+Testcase 2: Pattern doesn't exist in the given string S.
+'''
+
+def Rabin_Karp(pat, txt, q):
+    '''
+    Your task is to use KMP search algorithm
+	to check if given pat exits in the txt.
+
+	Function Arguments: pat (given pattern), txt(string to search into), q=101.
+	Return Type:boolean
+    '''
+    m = len(pat)
+    n = len(txt)
+    if m > n:
+        return False
+    d = 26
+    t = 0
+    p = 0
+    h = 1
+    for _ in range(m-1):
+        h = (h * d) % q
+    for i in range(m):
+        t = (d * t + ord(txt[i]) - ord('a')) % q
+        p = (d * p + ord(pat[i]) - ord('a')) % q
+    for i in range(n-m+1):
+        if p == t:
+            flag = True
+            for j in range(m):
+                if pat[j] != txt[i+j]:
+                    flag = False
+                    break
+            if flag:
+                return True
+        if i < n-m:
+            t = (d * (t - (ord(txt[i]) - ord('a')) * h) + ord(txt[i+m]) - ord('a')) % q
+            if t < 0:
+                t += q
+    return False
