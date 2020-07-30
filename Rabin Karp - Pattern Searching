@@ -42,7 +42,7 @@ Testcase 2: Pattern doesn't exist in the given string S.
 
 def Rabin_Karp(pat, txt, q):
     '''
-    Your task is to use KMP search algorithm
+    	Your task is to use Rabin-Karp Pattern Searching algorithm
 	to check if given pat exits in the txt.
 
 	Function Arguments: pat (given pattern), txt(string to search into), q=101.
