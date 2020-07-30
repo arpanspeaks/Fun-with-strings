@@ -7,14 +7,12 @@ TC: O(n)
 '''
 
 def computeLPS(s, lps):
-    res = 0
     prevLps = 0
     i = 1
     while i < len(s):
         if s[i] == s[prevLps]:
             prevLps += 1
             lps[i] = prevLps
-            res = max(res, prevLps)
             i += 1
         else:
             if prevLps == 0:
@@ -22,7 +20,7 @@ def computeLPS(s, lps):
                 i += 1
             else:
                 prevLps = lps[prevLps-1]
-    return res
+    return lps[len(lps)-1]
     
 def main():
     t = int(input())
